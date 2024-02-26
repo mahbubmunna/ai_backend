@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres:14.1
+    ports:
+      - '8090:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: ai_backend
+      POSTGRES_PASSWORD: "6KZGLfKf7vbQxZaP7cZnGuLCmJuTEbt5"
+    volumes:
+      - ai_backend_data:/var/lib/postgresql/data
+  redis:
+    image: redis:6.2.6
+    ports:
+      - '8091:6379'
+    command: redis-server --requirepass "1uQeJDfZH3dTIa479ggJXegb_rf1J9Cr"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+volumes:
+  ai_backend_data:
